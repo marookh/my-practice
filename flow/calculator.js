@@ -8,18 +8,21 @@
 
 const MESSAGES = require('./calculator_messages.json');
 
-
 const readline = require('readline-sync');
-function prompt(message) {
-    console.log(`=> ${message}`);
+
+function messages (message, lang = 'en') {
+  return MESSAGES[lang][message];
 }
-  
+
+function prompt (message) {
+  console.log('==> ' + message);
+}
 function invalidNumber(number) {
-    return number.trimStart() === '' || Number.isNaN(Number(number));
-  }
+  return number.trimStart() === '' || Number.isNaN(Number(number));
+}
 
 while (true) {
-  prompt(MESSAGES['welcome']);
+  prompt(messages('welcome', 'es'));
   prompt("What's the first number?");
   let number1 = readline.question();
   while (invalidNumber(number1)) {
@@ -47,18 +50,18 @@ while (true) {
 
   let output;
   switch (operation) {
-  case '1':
-    output = Number(number1) + Number(number2);
-    break;
-  case '2':
-    output = Number(number1) - Number(number2);
-    break;
-  case '3':
-    output = Number(number1) * Number(number2);
-    break;
-  case '4':
-    output = Number(number1) / Number(number2);
-    break;
+    case '1':
+      output = Number(number1) + Number(number2);
+      break;
+    case '2':
+      output = Number(number1) - Number(number2);
+      break;
+    case '3':
+      output = Number(number1) * Number(number2);
+      break;
+    case '4':
+      output = Number(number1) / Number(number2);
+      break;
   }
 
   prompt(`The result is: ${output}`);
@@ -68,6 +71,3 @@ while (true) {
 
   if (answer[0].toLowerCase() !== 'y') break;
 }
-
-
-
