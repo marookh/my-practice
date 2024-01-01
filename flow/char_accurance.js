@@ -3,18 +3,16 @@
 
 let char = 'x';
 let string = 'xzdsdgxdxsx';
-let iterator = 0;
 let counter = 0;
 
 function findThirdOccur(char, string) {
-  while (iterator < string.length) {
-    if (string[iterator] === char) {
+  for (let index = 0; index < string.length; index++) {
+    if (string[index] === char) {
       counter++;
       if (counter === 3) {
-        return iterator;
+        return index;
       }
     }
-    iterator++; 
   }
 }
 
